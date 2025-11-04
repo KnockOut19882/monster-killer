@@ -1,0 +1,15 @@
+{
+  "name": "monster-killer",
+  "version": "1.0.0",
+  "description": "Monster Killer Game",
+  "main": "index.html",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "keywords": [],
+  "author": "KnockOut19882",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
