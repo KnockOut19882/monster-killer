@@ -4,12 +4,14 @@
   "description": "Monster Killer Game",
   "main": "index.html",
   "scripts": {
-    "start": "lite-server"
+    "start": "lite-server",
+    "format": "prettier --write \"**/*.{js,html,css,json}\""
   },
   "keywords": [],
   "author": "KnockOut19882",
   "license": "ISC",
   "devDependencies": {
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "prettier": "^3.6.2"
   }
 }
