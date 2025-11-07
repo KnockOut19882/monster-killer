@@ -29,18 +29,10 @@ function writeToLog(event, value, playerHealth, monsterHealth) {
 	let logEntry = {
 		event: event,
 		value: value,
+		target: event === LOG_EVENT_MONSTER_ATTACK ? 'MONSTER' : 'PLAYER',
 		finalPlayerHealth: playerHealth,
 		finalMonsterHealth: monsterHealth,
 	};
-	if (
-		event === LOG_EVENT_PLAYER_ATTACK ||
-		event === LOG_EVENT_PLAYER_STRONG_ATTACK ||
-		event === LOG_EVENT_PLAYER_HEAL
-	) {
-		logEntry.target = 'PLAYER';
-	} else if (event === LOG_EVENT_MONSTER_ATTACK) {
-		logEntry.target = 'MONSTER';
-	}
 	battleLog.push(logEntry);
 }
 
@@ -49,6 +41,7 @@ adjustHealthBars(chosenMaxLife);
 function reset() {
 	currentMonsterHealth = chosenMaxLife;
 	currentPlayerHealth = chosenMaxLife;
+	hasBonusLife = true;
 	resetGame(chosenMaxLife);
 }
 
@@ -97,7 +90,6 @@ function endRound() {
 			currentMonsterHealth
 		);
 	}
-	0;
 
 	if (currentMonsterHealth <= 0 || currentPlayerHealth <= 0) {
 		reset();
