@@ -26,52 +26,22 @@ let hasBonusLife = true;
 let battleLog = [];
 
 function writeToLog(event, value, playerHealth, monsterHealth) {
-	let logEntry;
-	if (event === LOG_EVENT_PLAYER_ATTACK) {
-		logEntry = {
-			event: event,
-			value: value,
-			target: 'PLAYER',
-			finalPlayerHealth: playerHealth,
-			finalMonsterHealth: monsterHealth,
-		};
-		battleLog.push(logEntry);
-	} else if (event === LOG_EVENT_PLAYER_STRONG_ATTACK) {
-		logEntry = {
-			event: event,
-			value: value,
-			target: 'PLAYER',
-			finalPlayerHealth: playerHealth,
-			finalMonsterHealth: monsterHealth,
-		};
-		battleLog.push(logEntry);
-	} else if (event === LOG_EVENT_PLAYER_HEAL) {
-		logEntry = {
-			event: event,
-			value: value,
-			target: 'PLAYER',
-			finalPlayerHealth: playerHealth,
-			finalMonsterHealth: monsterHealth,
-		};
-		battleLog.push(logEntry);
+	let logEntry = {
+		event: event,
+		value: value,
+		finalPlayerHealth: playerHealth,
+		finalMonsterHealth: monsterHealth,
+	};
+	if (
+		event === LOG_EVENT_PLAYER_ATTACK ||
+		event === LOG_EVENT_PLAYER_STRONG_ATTACK ||
+		event === LOG_EVENT_PLAYER_HEAL
+	) {
+		logEntry.target = 'PLAYER';
 	} else if (event === LOG_EVENT_MONSTER_ATTACK) {
-		logEntry = {
-			event: event,
-			value: value,
-			target: 'MONSTER',
-			finalPlayerHealth: playerHealth,
-			finalMonsterHealth: monsterHealth,
-		};
-		battleLog.push(logEntry);
-	} else if (event === LOG_EVENT_GAME_OVER) {
-		logEntry = {
-			event: event,
-			value: value,
-			finalPlayerHealth: playerHealth,
-			finalMonsterHealth: monsterHealth,
-		};
-		battleLog.push(logEntry);
+		logEntry.target = 'MONSTER';
 	}
+	battleLog.push(logEntry);
 }
 
 adjustHealthBars(chosenMaxLife);
