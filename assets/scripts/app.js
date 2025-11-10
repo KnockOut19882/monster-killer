@@ -145,14 +145,30 @@ function healPlayerHandler() {
 }
 
 function showPreventLog() {
-	for (let i = 0; i < 3; i++) {
-		console.log('---------');
-	}
+	// for (let i = 0; i < 3; i++) {
+	// 	console.log('---------');
+	// }
+	let j = 0;
+	// while (j < 3) {
+	// 	console.log('J:', j);
+	// 	j++;
+	// }
+	do {
+		console.log('J:', j);
+		j++;
+	} while (j <= 3);
 	// for (let i = 0; i < battleLog.length; i++) {
 	// 	console.log(battleLog[i]);
 	// }
+	let i = 0;
 	for (const logEntry of battleLog) {
-		console.log(logEntry);
+		console.log(`#${i}`);
+		for (const key in logEntry) {
+			// console.log(key);
+			// console.log(logEntry[key]);
+			console.log(`${key} => ${logEntry[key]}`);
+		}
+		i++;
 	}
 }
 
